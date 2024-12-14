@@ -64,7 +64,7 @@ jobs:
 
       # Deploy to S3
       - name: Deploy to S3
-        run: aws s3 sync ./build s3://artisantilingbucket/react-build --delete
+        run: aws s3 sync ./dist s3://artisantilingbucket/react-build --delete
 
       # Invalidate CloudFront
       - name: Invalidate CloudFront
