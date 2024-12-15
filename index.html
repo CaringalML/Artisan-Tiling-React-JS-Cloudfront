@@ -23,15 +23,20 @@
     <meta property="og:title" content="Artisan Tiling | Professional Tiling Services in New Zealand" />
     <meta property="og:description" content="Expert tiling services for residential and commercial properties. Specializing in bathroom, kitchen, and outdoor tiling with premium craftsmanship." />
     <meta property="og:image" content="https://www.artisantiling.co.nz/logo.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Artisan Tiling Logo" />
     <meta property="og:locale" content="en_NZ" />
     <meta property="og:site_name" content="Artisan Tiling" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="https://www.artisantiling.co.nz" />
     <meta name="twitter:title" content="Artisan Tiling | Professional Tiling Services" />
     <meta name="twitter:description" content="Expert tiling services for residential and commercial properties. Specializing in bathroom, kitchen, and outdoor tiling with premium craftsmanship." />
     <meta name="twitter:image" content="https://www.artisantiling.co.nz/logo.png" />
+    <meta name="twitter:image:alt" content="Artisan Tiling Logo" />
 
     <!-- Preload Logo -->
     <link rel="preload" as="image" href="/logo.png" />
@@ -54,20 +59,7 @@
     <noscript>
       <strong>We're sorry but Artisan Tiling doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <!-- Fallback logo display while React loads -->
-    <div id="root">
-      <style>
-        .loader-logo {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          max-width: 150px;
-          height: auto;
-        }
-      </style>
-      <img src="/logo.png" alt="Artisan Tiling" class="loader-logo" />
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
