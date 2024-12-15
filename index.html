@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     
-    <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Logo and Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
 
@@ -23,9 +22,7 @@
     <meta property="og:url" content="https://www.artisantiling.co.nz" />
     <meta property="og:title" content="Artisan Tiling | Professional Tiling Services in New Zealand" />
     <meta property="og:description" content="Expert tiling services for residential and commercial properties. Specializing in bathroom, kitchen, and outdoor tiling with premium craftsmanship." />
-    <meta property="og:image" content="https://www.artisantiling.co.nz/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="https://www.artisantiling.co.nz/logo.png" />
     <meta property="og:locale" content="en_NZ" />
     <meta property="og:site_name" content="Artisan Tiling" />
 
@@ -34,8 +31,11 @@
     <meta name="twitter:url" content="https://www.artisantiling.co.nz" />
     <meta name="twitter:title" content="Artisan Tiling | Professional Tiling Services" />
     <meta name="twitter:description" content="Expert tiling services for residential and commercial properties. Specializing in bathroom, kitchen, and outdoor tiling with premium craftsmanship." />
-    <meta name="twitter:image" content="https://www.artisantiling.co.nz/twitter-card.jpg" />
+    <meta name="twitter:image" content="https://www.artisantiling.co.nz/logo.png" />
 
+    <!-- Preload Logo -->
+    <link rel="preload" as="image" href="/logo.png" />
+    
     <!-- Performance Optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,7 +54,20 @@
     <noscript>
       <strong>We're sorry but Artisan Tiling doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="root"></div>
+    <!-- Fallback logo display while React loads -->
+    <div id="root">
+      <style>
+        .loader-logo {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          max-width: 150px;
+          height: auto;
+        }
+      </style>
+      <img src="/logo.png" alt="Artisan Tiling" class="loader-logo" />
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
