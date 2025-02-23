@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="hero-content">
         <h1 className="hero-title">
           Transform Your Space with
-          <span className="highlight"> Expert Tilingssssss</span>
+          <span className="highlight"> Expert Tiling</span>
         </h1>
         <p className="hero-subtitle">
           Over 10 years of excellence in commercial, residential, and industrial tiling. Specializing in bathroom, kitchen, and outdoor tiling with premium craftsmanship.
