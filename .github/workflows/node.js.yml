@@ -1,4 +1,4 @@
-name: React CI/CD
+name: React CI/CD AWS deployment
 
 on:
   push:
