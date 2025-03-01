@@ -18,7 +18,7 @@ const Contact = () => {
     setSubmitStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/customers`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/customers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
