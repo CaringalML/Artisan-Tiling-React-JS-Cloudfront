@@ -28,6 +28,13 @@ resource "aws_s3_bucket_public_access_block" "storage_bucket" {
 resource "aws_s3_bucket_cors_configuration" "s3_cors" {
   bucket = aws_s3_bucket.storage_bucket.id
 
+  # Add explicit dependency on the bucket and its configuration
+  depends_on = [
+    aws_s3_bucket.storage_bucket,
+    aws_s3_bucket_public_access_block.storage_bucket,
+    aws_s3_bucket_server_side_encryption_configuration.storage_bucket
+  ]
+
   cors_rule {
     allowed_headers = [
       "*"
