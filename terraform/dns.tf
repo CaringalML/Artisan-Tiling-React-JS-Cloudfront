@@ -43,31 +43,7 @@ resource "aws_route53_record" "www" {
   }
 }
 
-# IPv6 support for apex domain
-resource "aws_route53_record" "apex_ipv6" {
-  zone_id = data.aws_route53_zone.main.zone_id
-  name    = var.domain_name
-  type    = "AAAA"
 
-  alias {
-    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
-    evaluate_target_health = false
-  }
-}
-
-# IPv6 support for www subdomain
-resource "aws_route53_record" "www_ipv6" {
-  zone_id = data.aws_route53_zone.main.zone_id
-  name    = "${var.subdomain}.${var.domain_name}"
-  type    = "AAAA"
-
-  alias {
-    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
-    evaluate_target_health = false
-  }
-}
 
 resource "aws_route53_record" "cert_validation" {
   for_each = {
