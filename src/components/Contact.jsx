@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Contact.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
+    userid: Math.random().toString(36).substring(2, 15) + Date.now().toString(36), // Generate a unique userid
     name: '',
     email: '',
     phone: '',
@@ -12,18 +13,39 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
 
+  // Regenerate userid on component mount
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      userid: Math.random().toString(36).substring(2, 15) + Date.now().toString(36)
+    }));
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
     try {
+      // Map service values to full strings if needed
+      const serviceMapping = {
+        'residential': 'Residential Tiling',
+        'commercial': 'Commercial Tiling',
+        'industrial': 'Industrial Tiling'
+      };
+
+      // Create a copy of form data with the mapped service
+      const submissionData = {
+        ...formData,
+        service: serviceMapping[formData.service] || formData.service
+      };
+
       const response = await fetch(`${import.meta.env.VITE_API_URL}/customers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(submissionData)
       });
 
       const data = await response.json();
@@ -33,8 +55,10 @@ const Contact = () => {
           type: 'success',
           message: 'Thank you for your message. We will get back to you soon!'
         });
-        // Clear form
+        // Clear form but keep the userid
+        const currentUserId = formData.userid;
         setFormData({
+          userid: currentUserId,
           name: '',
           email: '',
           phone: '',
@@ -42,12 +66,13 @@ const Contact = () => {
           message: ''
         });
       } else {
-        throw new Error(data.message || 'Something went wrong');
+        throw new Error(data.error || data.message || 'Something went wrong');
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'Failed to send message. Please try again later.'
+        message: `Failed to send message: ${error.message}. Please try again later.`
       });
     } finally {
       setIsSubmitting(false);
