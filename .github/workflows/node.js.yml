@@ -25,7 +25,6 @@ jobs:
 
       # Install dependencies if missing
       - name: Install Dependencies
-        if: steps.check-deps.outputs.missing_dependencies == 1
         run: npm ci
 
       # Create .env file with secrets
