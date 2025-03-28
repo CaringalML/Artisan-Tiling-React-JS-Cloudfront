@@ -1,4 +1,4 @@
-# Artisan Tiling Website
+# Artisan Tiling React + Vite Cloudfront
 
 ![AWS Infrastructure Diagram](frontend-architecture-diagram-for-artisan-tiling.png)
 
